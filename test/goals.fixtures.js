@@ -19,4 +19,4 @@ function makeGoalsArray(){
     ]
 }
 
-module.exports = makeGoalsArray;
+module.exports = {makeGoalsArray};

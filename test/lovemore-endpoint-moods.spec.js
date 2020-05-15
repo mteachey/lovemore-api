@@ -3,7 +3,7 @@ const app = require('../src/app')
 const { makeUsersArray } = require('./users.fixtures.js')
 const { makeMoodsArray } = require('./moods.fixtures.js')
 
-describe.only(`LoveMore endpoint /api/moods`,()=>{
+describe(`LoveMore endpoint /api/moods`,()=>{
     let db
 
     before('make knex instance',()=>{
