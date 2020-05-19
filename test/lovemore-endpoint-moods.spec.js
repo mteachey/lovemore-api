@@ -2,6 +2,7 @@ const knex = require('knex');
 const app = require('../src/app')
 const { makeUsersArray } = require('./users.fixtures.js')
 const { makeMoodsArray } = require('./moods.fixtures.js')
+require('dotenv').config()
 
 describe(`LoveMore endpoint /api/moods`,()=>{
     let db
@@ -25,6 +26,7 @@ describe(`LoveMore endpoint /api/moods`,()=>{
             it(`responds with 200 and an empty list`,()=>{
                 return supertest(app)
                 .get('/api/moods')
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .expect(200,[])
             })
         })//end context no moods
@@ -47,6 +49,7 @@ describe(`LoveMore endpoint /api/moods`,()=>{
             it(`responds with all moods`,()=>{
                 return supertest(app)
                     .get('/api/moods')
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .expect(200, testmoods)
             })//end it with moods in db
         })//end context moods in db       
@@ -72,6 +75,7 @@ describe(`LoveMore endpoint /api/moods`,()=>{
 
             return supertest(app)
                 .post('/api/moods')
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .send(newmood)
                 .expect(res=>{
                 expect(res.body.mood_level).to.eql(newmood.mood_level)
@@ -95,6 +99,7 @@ describe(`LoveMore endpoint /api/moods`,()=>{
 
                 return supertest(app)
                     .post('/api/moods')
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .send(newMood)
                     .expect(400,{ error: {message : `Missing '${field}' in request body`}
                     })
@@ -115,6 +120,7 @@ describe(`LoveMore endpoint /api/moods`,()=>{
 
                 return supertest(app)
                     .post('/api/moods')
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .send(newMood)
                     .expect(400,{ error: {message : `${field} must be between 1-10`}
                     })

@@ -1,9 +1,10 @@
 const knex = require('knex');
 const app = require('../src/app')
+require('dotenv').config()
 const { makeUsersArray } = require('./users.fixtures.js')
 const { makeGoalsArray } = require('./goals.fixtures.js')
 
-describe.only(`LoveMore endpoint /api/goals`,()=>{
+describe(`LoveMore endpoint /api/goals`,()=>{
     let db
 
     before('make knex instance',()=>{
@@ -25,6 +26,7 @@ describe.only(`LoveMore endpoint /api/goals`,()=>{
             it(`responds with 200 and an empty list`,()=>{
                 return supertest(app)
                 .get('/api/goals')
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .expect(200,[])
             })
         })//end context no goals
@@ -47,6 +49,7 @@ describe.only(`LoveMore endpoint /api/goals`,()=>{
             it(`responds with all goals`,()=>{
                 return supertest(app)
                     .get('/api/goals')
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .expect(200, testgoals)
             })//end it with goals in db
         })//end context goals in db       
@@ -74,6 +77,7 @@ describe.only(`LoveMore endpoint /api/goals`,()=>{
 
             return supertest(app)
                 .post('/api/goals')
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .send(newgoal)
                 .expect(res=>{
                 expect(res.body.emotional).to.eql(newgoal.emotional)
@@ -101,6 +105,7 @@ describe.only(`LoveMore endpoint /api/goals`,()=>{
 
                 return supertest(app)
                     .post('/api/goals')
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .send(newgoal)
                     .expect(400,{ error: {message : `${field} must be between 1-10`}
                     })

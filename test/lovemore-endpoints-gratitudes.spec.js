@@ -1,14 +1,10 @@
 const knex = require('knex');
 const app = require('../src/app')
-const { makeQuotesArray } = require('./quotes.fixtures.js')
-const { makeGoalsArray } = require('./goals.fixtures.js')
+require('dotenv').config()
+
 const { makeUsersArray } = require('./users.fixtures.js')
 const { makeGratitudesArray,
     makeMaliciousGratitude } = require('./gratitudes.fixtures.js')
-const { makeInspiresArray } = require('./inspires.fixtures.js')
-const { makeMoodsArray } = require('./moods.fixtures.js')
-const { makeSelfCaresArray,
-    makeMaliciousSelfCare } = require('./selfcares.fixtures.js')
 
 describe(`LoveMore endpoints`,()=>{
     let db 
@@ -32,6 +28,7 @@ describe(`LoveMore endpoints`,()=>{
             it(`responds with Hello, World`,()=>{
                 return supertest(app)
                 .get('/')
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .expect('Hello, world!')
             })
         })//end context GET/
@@ -42,6 +39,7 @@ describe(`LoveMore endpoints`,()=>{
             it(`responds with 200 and an empty list`,()=>{
                 return supertest(app)
                 .get('/api/gratitudes')
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .expect(200,[])
             })
         })//end of context no gratitudes
@@ -64,6 +62,7 @@ describe(`LoveMore endpoints`,()=>{
             it(`responds with all gratitudes`,()=>{
                 return supertest(app)
                 .get('/api/gratitudes')
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .expect(200,testGratitudes)
             })//end it responds with all gratitudes
         })//end context gratitudes in db
@@ -92,6 +91,7 @@ describe(`LoveMore endpoints`,()=>{
 
             return supertest(app)
                 .post('/api/gratitudes')
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .send(newGratitudes)
                 .expect(res=>{
                     expect(res.body[0].content).to.eql(newGratitudes[0].content)
@@ -110,6 +110,7 @@ describe(`LoveMore endpoints`,()=>{
 
             return supertest(app)
                 .post('/api/gratitudes')
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .send(newGratitude)
                 .expect(400,{ error: {message : `Missing content in request body`}
                 })

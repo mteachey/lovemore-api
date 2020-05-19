@@ -2,6 +2,7 @@ const knex = require('knex');
 const app = require('../src/app')
 const { makeUsersArray } = require('./users.fixtures.js')
 const { makeQuotesArray } = require('./quotes.fixtures.js')
+require('dotenv').config()
 
 describe(`LoveMore endpoint /api/quotes`,()=>{
     let db
@@ -25,6 +26,7 @@ describe(`LoveMore endpoint /api/quotes`,()=>{
             it(`responds with 200 and an empty list`,()=>{
                 return supertest(app)
                 .get('/api/quotes')
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .expect(200,[])
             })
         })//end context no quotes
@@ -47,6 +49,7 @@ describe(`LoveMore endpoint /api/quotes`,()=>{
             it(`responds with all quotes`,()=>{
                 return supertest(app)
                     .get('/api/quotes')
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .expect(200, testquotes)
             })//end it with quotes in db
         })//end context quotes in db       

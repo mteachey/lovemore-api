@@ -2,6 +2,7 @@ const knex = require('knex');
 const app = require('../src/app')
 const { makeUsersArray } = require('./users.fixtures.js')
 const { makeSelfCaresArray, makeMaliciousSelfCare } = require('./selfcares.fixtures.js')
+require('dotenv').config()
 
 describe(`LoveMore endpoint /api/selfcares`,()=>{
     let db
@@ -25,6 +26,7 @@ describe(`LoveMore endpoint /api/selfcares`,()=>{
             it(`responds with 200 and an empty list`,()=>{
                 return supertest(app)
                 .get('/api/selfcares')
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .expect(200,[])
             })
         })//end context no selfcares
@@ -47,6 +49,7 @@ describe(`LoveMore endpoint /api/selfcares`,()=>{
             it(`responds with all selfcares`,()=>{
                 return supertest(app)
                     .get('/api/selfcares')
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .expect(200, testSelfCares)
             })//end it with selfcares in db
         })//end context selfcares in db       
@@ -79,6 +82,7 @@ describe(`LoveMore endpoint /api/selfcares`,()=>{
 
             return supertest(app)
                 .post('/api/selfcares')
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .send(newSelfCares)
                 .expect(res=>{
                    expect(res.body[0].content).to.eql(newSelfCares[0].content)
@@ -109,6 +113,7 @@ describe(`LoveMore endpoint /api/selfcares`,()=>{
 
                 return supertest(app)
                     .post('/api/selfcares')
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .send(newSelfCare)
                     .expect(400,{ error: {message : `Missing '${field}' in request body`}
                     })
@@ -128,6 +133,7 @@ describe(`LoveMore endpoint /api/selfcares`,()=>{
             ]
             return supertest(app)
                     .post('/api/selfcares')
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .send(newSelfCare)
                     .expect(400,{ error: {message : `Type must be physical, intellectual, spiritual, emotional`}
                     })
@@ -145,6 +151,7 @@ describe(`LoveMore endpoint /api/selfcares`,()=>{
             ]
             return supertest(app)
                     .post('/api/selfcares')
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .send(newSelfCare)
                     .expect(400,{ error: {message : `Rating must be between 1-10`}
                     })

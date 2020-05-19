@@ -1,5 +1,6 @@
 const knex = require('knex');
 const app = require('../src/app')
+require('dotenv').config()
 const { makeUsersArray } = require('./users.fixtures.js')
 const { makeInspiresArray } = require('./inspires.fixtures.js')
 
@@ -25,6 +26,7 @@ describe(`LoveMore endpoint /api/inspires`,()=>{
             it(`responds with 200 and an empty list`,()=>{
                 return supertest(app)
                 .get('/api/inspires')
+                .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                 .expect(200,[])
             })
         })//end context no inspires
@@ -47,6 +49,7 @@ describe(`LoveMore endpoint /api/inspires`,()=>{
             it(`responds with all inspires`,()=>{
                 return supertest(app)
                     .get('/api/inspires')
+                    .set('Authorization', `Bearer ${process.env.API_TOKEN}`)
                     .expect(200, testinspires)
             })//end it with inspires in db
         })//end context inspires in db       
