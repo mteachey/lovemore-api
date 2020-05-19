@@ -1,0 +1,20 @@
+INSERT INTO lovemore_selfcares (user_id, content, type, rating, date_modified)
+VALUES
+        (2,'Exploring a new town','emotional',5,now() - '21 days'::INTERVAL),
+        (2,'Yoga','physical',4,now() - '20 days'::INTERVAL),
+        (2,'Yoga','spiritual',5, now() - '19 days'::INTERVAL),
+        (2,'Listened to the audi book A Short History of Nearly Everything','emotional',5,now() - '18 days'::INTERVAL),
+        (2,'Had a small social gathering with two amazing ladies','emotional',5,now() - '17 days'::INTERVAL),
+        (2,'Worked on a new painting','emotional',3, now() - '16 days'::INTERVAL),
+        (2,'Meditated for 10 minutes','spiritual',4, now() - '15 days'::INTERVAL),
+        (2,'Meditated for 20 minutes','spiritual',4, now() - '14 days'::INTERVAL),
+        (2,'Meditated for 5 minutes','spiritual',3, now() - '13 days'::INTERVAL),
+        (2,'Meditated for 15 minutes','spiritual',5, now() - '12 days'::INTERVAL),
+        (2,'Meditated for 10 minutes','spiritual',4, now() - '11 days'::INTERVAL),
+        (2,'Meditated for 10 minutes','spiritual',4, now() - '10 days'::INTERVAL),
+        (2,'Meditated for 10 minutes','spiritual',4, now() - '9 days'::INTERVAL),
+        (2,'Meditated for 20 minutes','spiritual',5,now() - '8 days'::INTERVAL),
+        (2,'Meditated for 5 minutes','spiritual',3,now() - '7 days'::INTERVAL),
+        (2,'Went for a run','physical',4,now() - '6 days'::INTERVAL),
+        (2,'Worked on a new painting','emotional',3,now() - '5 days'::INTERVAL),
+        (2,'Cooked a new receipe','emotional',3,now() - '4 days'::INTERVAL);

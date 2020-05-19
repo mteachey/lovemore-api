@@ -16,15 +16,34 @@ const serializedGratitude = gratitude =>({
 gratitudesRouter
     .route('/')
     .get((req, res, next)=>{
-        GratitudesService.getAllGratitudes(
-            req.app.get('db')
-        )
-        .then(gratitudes=>{
 
-            res.json(gratitudes.map(serializedGratitude))
-        })
-        .catch(next)
+      //  const{ page = 1, date="" } =req.query;
+      //  if(!date){
+            console.log(`did this run`);
+            GratitudesService.getAllGratitudes(
+                req.app.get('db')
+                //,page
+            )
+            .then(gratitudes=>{
+
+                res.json(gratitudes.map(serializedGratitude))
+            })
+            .catch(next)
+    //    }
+    /*    if(date){
+            GratitudesService.getSpecificDateGratitude(
+                req.app.get('db'),
+                date
+            )
+            .then(gratitudes=>{
+
+                res.json(gratitudes.map(serializedGratitude))
+            })
+            .catch(next)
+
+        }*/
     })
+
     .post(jsonParser, (req, res, next)=>{
 
         const numberOfEntries = req.body.length

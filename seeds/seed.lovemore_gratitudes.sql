@@ -1,6 +1,21 @@
-INSERT INTO lovemore_gratitudes (user_id, content)
+INSERT INTO lovemore_gratitudes (user_id, content, date_modified)
 VALUES
- (1,'I kept my cool with the service phone rep'),
- (1,'A catch up phone call with Kelsie'),
- (2,'Seeing the tulips blooming'),
- (2,'The yummy pizza I had for dinner last night');
+ (1,'I kept my cool with the service phone rep',now() - '9 days'::INTERVAL),
+ (1,'A catch up phone call with Kelsie', now() - '10 days'::INTERVAL),
+ (2,'Seeing the tulips blooming',now() - '10 days'::INTERVAL),
+ (2,'The yummy pizza I had for dinner last night',now() - '12 days'::INTERVAL),
+ (2,'My family is all healthy',now() - '12 days'::INTERVAL),
+ (2,'New hikes',now() - '12 days'::INTERVAL),
+ (2,'Pixy''s amazingness',now() - '6 days'::INTERVAL),
+ (2,'Sequin face masks',now() - '6 days'::INTERVAL),
+ (2,'Good friends who check in',now() - '6 days'::INTERVAL),
+ (2,'Parents that are always there for you',now() - '14 days'::INTERVAL),
+ (2,'Beautiful bluebird days',now() - '14 days'::INTERVAL),
+ (2,'Feeling inspired',now() - '14 days'::INTERVAL),
+ (2,'Pumpkin pie for dessert',now() - '13 days'::INTERVAL),
+ (2,'New plants for the balcony',now() - '13 days'::INTERVAL),
+ (2,'Sitting in the sun reading a book',now() - '8 days'::INTERVAL),
+ (2,'Bike rides with friends in the neighborhood',now() - '8 days'::INTERVAL),
+ (2,'Loving my home',now() - '7 days'::INTERVAL),
+ (2,'Sleeping in on a Sunday',now() - '7 days'::INTERVAL),
+ (2,'Small social gatherings with friends',now() - '13 days'::INTERVAL);

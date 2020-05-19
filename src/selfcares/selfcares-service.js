@@ -1,6 +1,7 @@
 const SelfCaresService ={
     getAllSelfCares(knex){
-        return knex.select('*').from('lovemore_selfcares')
+        return knex.select('*')
+        .from('lovemore_selfcares')
     },
 
     insertSelfCares(knex, newSelfCares){
