@@ -1,6 +1,5 @@
 const express = require('express')
 const xss = require('xss')
-//const path = require('path')
 const MoodsService = require('./moods-service.js')
 
 const moodsRouter = express.Router()

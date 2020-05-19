@@ -17,39 +17,22 @@ gratitudesRouter
     .route('/')
     .get((req, res, next)=>{
 
-      //  const{ page = 1, date="" } =req.query;
-      //  if(!date){
             console.log(`did this run`);
             GratitudesService.getAllGratitudes(
                 req.app.get('db')
-                //,page
             )
             .then(gratitudes=>{
 
                 res.json(gratitudes.map(serializedGratitude))
             })
             .catch(next)
-    //    }
-    /*    if(date){
-            GratitudesService.getSpecificDateGratitude(
-                req.app.get('db'),
-                date
-            )
-            .then(gratitudes=>{
-
-                res.json(gratitudes.map(serializedGratitude))
-            })
-            .catch(next)
-
-        }*/
     })
 
     .post(jsonParser, (req, res, next)=>{
 
         const numberOfEntries = req.body.length
         let newGratitudes = [];
-        for(let i=0; i<numberOfEntries; i++){
-          //req.body[i].content          
+        for(let i=0; i<numberOfEntries; i++){         
             if(req.body[i].content==null){
                 return res.status(400).json({
                     error: { message : `Missing content in request body`}
@@ -61,8 +44,6 @@ gratitudesRouter
             let newGratitude = {...req.body[i],user_id:2};
 
             newGratitudes = [...newGratitudes, newGratitude]
-
-            //console.log(newGratitudes)
         }
         
        GratitudesService.insertGratitudes(

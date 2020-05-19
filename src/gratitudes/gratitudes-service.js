@@ -28,7 +28,6 @@ const GratitudesService ={
        return knex
        .select('*')
        .from('lovemore_gratitudes')
-       //.whereBetween('date_modified', [from, to])
        .whereBetween('date_modified', [from,to])
        .orderBy([
         { column: 'date_modified', order: 'DESC' },
