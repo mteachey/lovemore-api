@@ -1,26 +1,19 @@
-# Express Boilerplate!
+Love More Laugh More API v1
 
-This is a boilerplate project used for starting new projects!
+Overview — This repo contains the files for the api created for the Love More Laugh More app.
 
-## Set up
+The client-app provides a place for users to set goals, see and celebrate their progress, record daily gratitudes, and find ideas for inspiration. The api url is https://salty-castle-42567.herokuapp.com/
+. The client-app can best be viewed at https://lovemore.now.sh/.
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+The API currently allows for GET requests for all self-cares, gratitudes, moods, goals, quotes, and inspirations; POST requests for new self-cares, gratitudes, moods, and goals. 
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+Installation instructions — clone the repo and run npm i.
 
-## Scripts
+Key Technology - Express, Node, PostgreSQL
 
-Start the application `npm start`
+Copyright 2020
 
-Start nodemon for the application `npm run dev`
+Contact info - melindateachey@gmail.com
 
-Run the tests `npm test`
+Changelog — None at this time
 
-## Deploying
-
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
